@@ -26,7 +26,15 @@ class Dice:
         return f"{self.__color} {self.__sides}"
 
 
-white6 = Dice("white", 6)
-print(white6.sides)
-white6.sides = "Robert"
-print(white6.sides)
+class Person:
+    def __init__(self, first_name, last_name):
+        self.__first_name = first_name
+        self.__last_name = last_name
+
+    @property
+    def full_name(self):
+        return f"{self.__first_name} {self.__last_name}"
+
+
+robert = Person("Robert", "Vari")
+print(robert.full_name)
