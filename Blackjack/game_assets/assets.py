@@ -11,6 +11,10 @@ class Card:
         assert isinstance(new_value, int), "Value must be of type int"
         self._value = new_value
 
+    @property
+    def value(self):
+        return self._value
+
     def __str__(self):
         return f"Name: {self._name} Value: {self._value}"
 
@@ -66,13 +70,22 @@ class PlayerBase:
 
         self._create()
 
+    def init_hand(self, deck):
+        self._hand.clear()
+        self._hand.append(deck.draw_card())
+        self._hand.append(deck.draw_card())
+
+    @property
+    def hand_value(self):
+        return sum([card.value for card in self._hand])
+
     def _create(self):
         first_names = ["Brittney", "Curtis", "Lucas", "Chip", "Simon"]
         last_names = ["Moriah", "Tristin", "Troy", "Gale", "Lynn"]
         self._name = f"{choice(first_names)} {choice(last_names)}"
 
     def report(self):
-        print(f"Name: {self._name} Hand: {self._hand} Credits: {self._credits}")
+        print(f"Name: {self._name} Hand: {self._hand} Credits: {self._credits} Hand Value: {self.hand_value}")
 
 
 class AIPlayer(PlayerBase):
@@ -81,7 +94,8 @@ class AIPlayer(PlayerBase):
 
 class Player(PlayerBase):
     def _create(self):
-        player_name = input("What is your name?")
+        # player_name = input("What is your name?")
+        player_name = "Robert Vari"
         self._name = player_name
 
 
@@ -91,6 +105,9 @@ if __name__ == '__main__':
 
     player = Player()
     ai_player = AIPlayer()
+
+    player.init_hand(deck)
+    ai_player.init_hand(deck)
 
     player.report()
     ai_player.report()
