@@ -1,3 +1,6 @@
+from random import shuffle
+
+
 class Card:
     def __init__(self, name, value):
         self._name = name
@@ -47,7 +50,12 @@ class Deck:
                 card = Card(card_name, value)
                 self._cards.append(card)
 
-        print(self._cards)
+        shuffle(self._cards)
+
+    def draw_card(self):
+        new_card = self._cards[0]
+        self._cards.remove(new_card)
+        return new_card
 
 
 if __name__ == '__main__':
