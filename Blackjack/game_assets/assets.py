@@ -64,6 +64,8 @@ class PlayerBase:
         self._hand = []
         self._credits = randint(10, 100)
 
+        self._create()
+
     def _create(self):
         first_names = ["Brittney", "Curtis", "Lucas", "Chip", "Simon"]
         last_names = ["Moriah", "Tristin", "Troy", "Gale", "Lynn"]
@@ -78,7 +80,9 @@ class AIPlayer(PlayerBase):
 
 
 class Player(PlayerBase):
-    pass
+    def _create(self):
+        player_name = input("What is your name?")
+        self._name = player_name
 
 
 if __name__ == '__main__':
