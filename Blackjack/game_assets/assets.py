@@ -40,6 +40,15 @@ class Deck:
 
         names = ["Heart", "Club", "Diamond", "Spade"]
 
+        for name in names:
+            for card in cards:
+                card_name = f"{name} {card[0]}"
+                value = card[1]
+                card = Card(card_name, value)
+                self._cards.append(card)
+
+        print(self._cards)
+
 
 if __name__ == '__main__':
     deck = Deck()
