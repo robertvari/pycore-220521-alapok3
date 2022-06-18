@@ -1,4 +1,4 @@
-from random import shuffle
+from random import shuffle, randint, choice
 
 
 class Card:
@@ -58,6 +58,35 @@ class Deck:
         return new_card
 
 
+class PlayerBase:
+    def __init__(self):
+        self._name = None
+        self._hand = []
+        self._credits = randint(10, 100)
+
+    def _create(self):
+        first_names = ["Brittney", "Curtis", "Lucas", "Chip", "Simon"]
+        last_names = ["Moriah", "Tristin", "Troy", "Gale", "Lynn"]
+        self._name = f"{choice(first_names)} {choice(last_names)}"
+
+    def report(self):
+        print(f"Name: {self._name} Hand: {self._hand} Credits: {self._credits}")
+
+
+class AIPlayer(PlayerBase):
+    pass
+
+
+class Player(PlayerBase):
+    pass
+
+
 if __name__ == '__main__':
     deck = Deck()
     deck.create()
+
+    player = Player()
+    ai_player = AIPlayer()
+
+    player.report()
+    ai_player.report()
