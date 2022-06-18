@@ -15,6 +15,10 @@ class Card:
     def value(self):
         return self._value
 
+    @property
+    def name(self):
+        return self._name
+
     def __str__(self):
         return f"Name: {self._name} Value: {self._value}"
 
@@ -72,8 +76,14 @@ class PlayerBase:
 
     def init_hand(self, deck):
         self._hand.clear()
-        self._hand.append(deck.draw_card())
-        self._hand.append(deck.draw_card())
+        new_card = deck.draw_card()
+        self._hand.append(new_card)
+
+        new_card = deck.draw_card()
+        if self.hand_value > 10 and "Ace" in new_card.name:
+            new_card.set_value(1)
+
+        self._hand.append(new_card)
 
     @property
     def hand_value(self):
@@ -109,5 +119,3 @@ if __name__ == '__main__':
     player.init_hand(deck)
     ai_player.init_hand(deck)
 
-    player.report()
-    ai_player.report()
