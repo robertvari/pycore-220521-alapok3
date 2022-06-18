@@ -5,6 +5,9 @@ class Person:
         self.email = email
         self.address = address
 
+    def say_hello(self):
+        print(f"Hello. My name is {self.name}. I'm {self.age} years old. I live in {self.address}")
+
     def __str__(self):
         return f"Name: {self.name}\nAge: {self.age}\nEmail: {self.email}\nAddress: {self.address}"
 
@@ -19,3 +22,5 @@ csilla = Person(name="Csilla", age=28, email="csilla@gmail.com", address="Debrec
 my_friends = [tamas, robert, csilla]
 print(my_friends)
 print(csilla)
+
+csilla.say_hello()
