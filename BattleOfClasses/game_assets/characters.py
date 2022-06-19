@@ -4,9 +4,12 @@ import random
 class CharacterBase:
     def __init__(self):
         self._name = None
+        # todo add attributes here...
 
-    def create(self):
-        pass
+        self._create()
+
+    def _create(self):
+        self._name = self.get_fantasy_name()
 
     @staticmethod
     def get_fantasy_name():
@@ -23,3 +26,28 @@ class CharacterBase:
                   'wain', 'wan', 'win', 'wise', 'ya']
 
         return f"{random.choice(FIRST)}{random.choice(SECOND)}"
+
+    def __str__(self):
+        return self._name
+
+
+class Player(CharacterBase):
+    def _create(self):
+        self._name = input("What is your name?")
+
+
+class AIPlayer(CharacterBase):
+    pass
+
+
+if __name__ == '__main__':
+    player = Player()
+
+    bartender = AIPlayer()
+    random_citizen = AIPlayer()
+    enemy1 = AIPlayer()
+    enemy2 = AIPlayer()
+    enemy3 = AIPlayer()
+
+    print(player)
+    print(ai_player)
