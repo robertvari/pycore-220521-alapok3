@@ -16,9 +16,9 @@ class Blackjack:
 
         self._reward = 0
 
-        self.start()
+        self._start()
 
-    def start(self):
+    def _start(self):
         # reset _reward
         self._reward = 0
 
@@ -29,17 +29,32 @@ class Blackjack:
         for p in self._players:
             self._reward += p.give_bet(10)
 
-        # todo start player turns
+        # start player turns
         for p in self._players:
             p.init_hand(self._deck)
             p.draw_cards(self._deck)
 
-        # todo finish game and announce winner
+        # todo finish round and announce winner
+        self._get_winner()
 
         # todo ask player if want to play again
 
+    def _get_winner(self):
+        players_in_turn = [p for p in self._players if p.hand_value <= 21]
+
+        if players_in_turn:
+            pass
+        else:
+            print("Nobody wins this time :(")
+
+        player_input = input("Do you want to play again? (y/n)")
+        if player_input == "y":
+            self._start()
+        else:
+            self._exit()
+
     @staticmethod
-    def exit():
+    def _exit():
         print("See you later!")
         exit()
 
