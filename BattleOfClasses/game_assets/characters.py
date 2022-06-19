@@ -36,10 +36,15 @@ class CharacterBase:
 
     def take_damage(self, value):
         self._current_health -= value
+        print(f"{self._name} health: {self._current_health}")
 
     @property
     def golds(self):
         return self._golds
+
+    @property
+    def inventory(self):
+        return self._inventory
 
     def _create(self):
         self._name = self.get_fantasy_name()
@@ -82,6 +87,15 @@ class Player(CharacterBase):
 
         # if item type == Weapon att to right hand
 
+    def give_inventory(self, other_inventory):
+        if other_inventory:
+            print(f"{self._name} gets: {other_inventory}")
+            self._inventory += other_inventory
+
+    def give_golds(self, value):
+        print(f"{self._name} gets {value} golds")
+        self._golds += value
+
 
 class AIPlayer(CharacterBase):
     def _create(self):
@@ -107,6 +121,18 @@ class AIPlayer(CharacterBase):
 
 if __name__ == '__main__':
     enemy1 = AIPlayer()
-    enemy2 = AIPlayer()
-    enemy3 = AIPlayer()
-    enemy4 = AIPlayer()
+    player = Player()
+
+    winner = None
+    while True:
+        enemy1.attack(player)
+        if not player.alive:
+            winner = enemy1
+            break
+
+        player.attack(enemy1)
+        if not enemy1.alive:
+            winner = player
+            break
+
+    print(f"The winner is: {winner}")

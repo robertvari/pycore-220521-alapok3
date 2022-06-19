@@ -109,7 +109,6 @@ class Arena(PlaceBase):
     def _start_challenge(self):
         self._game.clear_screen()
         my_enemy = random.choice(self._enemy_list)
-        winner = None
 
         while True:
             my_enemy.attack(self._player)
@@ -120,6 +119,8 @@ class Arena(PlaceBase):
             self._player.attack(my_enemy)
             if not my_enemy.alive:
                 winner = self._player
+                self._player.give_inventory(my_enemy.inventory)
+                self._player.give_golds(my_enemy.golds)
                 break
 
         print(f"The winner is: {winner}")
