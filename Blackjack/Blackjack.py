@@ -22,15 +22,17 @@ class Blackjack:
         # reset _reward
         self._reward = 0
 
-        # todo get bet from all players: 10 credits
+        # reset deck
+        self._deck.create()
+
+        # get bet from all players: 10 credits
         for p in self._players:
             self._reward += p.give_bet(10)
 
-        pass
         # todo start player turns
-        # for p in self._players:
-            # p.init_hand(self._deck)
-            # p.draw_cards(self._deck)
+        for p in self._players:
+            p.init_hand(self._deck)
+            p.draw_cards(self._deck)
 
         # todo finish game and announce winner
 
