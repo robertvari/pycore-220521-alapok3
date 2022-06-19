@@ -1,4 +1,5 @@
 from random import shuffle, randint, choice
+import time
 
 
 class Card:
@@ -87,13 +88,22 @@ class PlayerBase:
         self._hand.append(new_card)
 
     def draw_cards(self, deck):
+        print(f"{self._name} turns")
+
         while self._in_game:
             if self.hand_value < 18:
                 new_card = deck.draw_card()
+
+                print(f"{self._name} draws a card: {new_card}")
+                time.sleep(1)
                 if "Ace" in new_card.name and self.hand_value > 10:
                     new_card.set_value(1)
 
                 self._hand.append(new_card)
+            else:
+                print(f"{self._name} finishes his/her turn")
+                time.sleep(1)
+                self._in_game = False
 
 
     @property
