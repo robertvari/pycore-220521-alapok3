@@ -12,6 +12,10 @@ class ItemBase:
     def name(self):
         return self._name
 
+    @property
+    def attr_modifier(self):
+        return self._attr_modifier
+
     def __repr__(self):
         return self._name
 

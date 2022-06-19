@@ -1,4 +1,6 @@
 import random
+import time
+
 from game_assets.items import Weapon, CommonItem
 
 
@@ -10,8 +12,30 @@ class CharacterBase:
         self._golds = random.randint(2, 20)
         self._inventory = []
         self._right_hand = None
+        self._current_health = 100
+        self._strength = random.randint(10, 100)
 
         self._create()
+
+    @property
+    def alive(self):
+        return self._current_health > 0
+
+    def attack(self, other):
+        attack_strength = random.randint(0, self._strength)
+        if self._right_hand:
+            attack_strength += self._right_hand.attr_modifier
+
+        if attack_strength:
+            print(f"{self._name} attacks {other}. Attack strength: {attack_strength}")
+            time.sleep(3)
+            other.take_damage(attack_strength)
+        else:
+            print(f"{self._name} misses...")
+            time.sleep(3)
+
+    def take_damage(self, value):
+        self._current_health -= value
 
     @property
     def golds(self):
