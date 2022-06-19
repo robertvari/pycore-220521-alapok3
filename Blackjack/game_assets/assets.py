@@ -71,6 +71,7 @@ class PlayerBase:
         self._name = None
         self._hand = []
         self._credits = randint(10, 100)
+        self._in_game = True
 
         self._create()
 
@@ -84,6 +85,16 @@ class PlayerBase:
             new_card.set_value(1)
 
         self._hand.append(new_card)
+
+    def draw_cards(self, deck):
+        while self._in_game:
+            if self.hand_value < 18:
+                new_card = deck.draw_card()
+                if "Ace" in new_card.name and self.hand_value > 10:
+                    new_card.set_value(1)
+
+                self._hand.append(new_card)
+
 
     @property
     def hand_value(self):
@@ -119,3 +130,7 @@ if __name__ == '__main__':
     player.init_hand(deck)
     ai_player.init_hand(deck)
 
+    player_list = [player, ai_player]
+
+    for p in player_list:
+        p.draw_cards(deck)
