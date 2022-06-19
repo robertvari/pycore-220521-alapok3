@@ -87,6 +87,12 @@ class PlayerBase:
 
         self._hand.append(new_card)
 
+    def give_bet(self, value):
+        self._credits -= value
+        if self._credits <= 0:
+            self._in_game = False
+        return value
+
     def draw_cards(self, deck):
         print("-"*20, f"{self._name} turns", "-"*20,)
         print(f"Hand: {self._hand}")
@@ -128,8 +134,8 @@ class AIPlayer(PlayerBase):
 
 class Player(PlayerBase):
     def _create(self):
-        player_name = input("What is your name?")
-        # player_name = "Robert Vari"
+        # player_name = input("What is your name?")
+        player_name = "Robert Vari"
         self._name = player_name
 
         print("Wellcome to the game")
