@@ -88,7 +88,9 @@ class PlayerBase:
         self._hand.append(new_card)
 
     def draw_cards(self, deck):
-        print(f"{self._name} turns")
+        print("-"*20, f"{self._name} turns", "-"*20,)
+        print(f"Hand: {self._hand}")
+        print(f"Hand value: {self.hand_value}")
 
         while self._in_game:
             if self.hand_value < 18:
@@ -104,7 +106,6 @@ class PlayerBase:
                 print(f"{self._name} finishes his/her turn")
                 time.sleep(1)
                 self._in_game = False
-
 
     @property
     def hand_value(self):
