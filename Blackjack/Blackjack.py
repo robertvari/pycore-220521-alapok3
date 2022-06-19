@@ -43,7 +43,9 @@ class Blackjack:
         players_in_turn = [p for p in self._players if p.hand_value <= 21]
 
         if players_in_turn:
-            pass
+            winner_list = sorted(players_in_turn, key=lambda p: p.hand_value)
+            winner = winner_list[-1]
+            winner.give_reward(self._reward)
         else:
             print("Nobody wins this time :(")
 

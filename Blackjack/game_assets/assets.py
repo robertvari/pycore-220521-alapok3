@@ -76,6 +76,11 @@ class PlayerBase:
 
         self._create()
 
+    def give_reward(self, value):
+        self._credits += value
+        print(f"The winner is: {self._name}")
+        print(f"{self._name} wins {value}. Now has {self._credits}")
+
     def init_hand(self, deck):
         self._hand.clear()
         new_card = deck.draw_card()
