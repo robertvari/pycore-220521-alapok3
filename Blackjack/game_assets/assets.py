@@ -138,12 +138,16 @@ if __name__ == '__main__':
     deck.create()
 
     player = Player()
-    ai_player = AIPlayer()
+    ai_player1 = AIPlayer()
+    ai_player2 = AIPlayer()
+    ai_player3 = AIPlayer()
 
     player.init_hand(deck)
-    ai_player.init_hand(deck)
+    ai_player1.init_hand(deck)
+    ai_player2.init_hand(deck)
+    ai_player3.init_hand(deck)
 
-    player_list = [player, ai_player]
+    player_list = [player, ai_player1, ai_player2, ai_player3]
 
     for p in player_list:
         p.draw_cards(deck)
