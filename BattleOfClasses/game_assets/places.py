@@ -76,6 +76,12 @@ class Tavern(PlaceBase):
             input("Press enter to continue")
             self._shop_menu()
 
+        self._player.buy(chosen_item)
+        print(f"You bought a {chosen_item.name}")
+        input()
+        print("Press enter to continue")
+        self._main_menu()
+
 
 class Arena(PlaceBase):
     def _main_menu(self):

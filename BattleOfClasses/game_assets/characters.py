@@ -1,4 +1,5 @@
 import random
+from game_assets.items import Weapon
 
 
 class CharacterBase:
@@ -6,6 +7,8 @@ class CharacterBase:
         self._name = None
         # todo add attributes here...
         self._golds = random.randint(2, 20)
+        self._inventory = []
+        self._right_hand = None
 
         self._create()
 
@@ -41,6 +44,14 @@ class Player(CharacterBase):
         # self._name = input("What is your name?")
         self._name = "Robert Vari"
 
+    def buy(self, item):
+        if isinstance(item, Weapon) and not self._right_hand:
+            self._right_hand = item
+        else:
+            self._inventory.append(item)
+
+        # if item type == Weapon att to right hand
+
 
 class AIPlayer(CharacterBase):
     pass
@@ -48,12 +59,10 @@ class AIPlayer(CharacterBase):
 
 if __name__ == '__main__':
     player = Player()
+    sword = Weapon("Sword", 10, 20)
+    hammer = Weapon("Hammer", 10, 20)
 
-    bartender = AIPlayer()
-    random_citizen = AIPlayer()
-    enemy1 = AIPlayer()
-    enemy2 = AIPlayer()
-    enemy3 = AIPlayer()
+    player.buy(sword)
+    player.buy(hammer)
 
-    print(player)
-    print(enemy1)
+    pass
