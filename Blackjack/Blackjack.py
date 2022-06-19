@@ -19,9 +19,19 @@ class Blackjack:
         self.start()
 
     def start(self):
-        pass
+        # reset _reward
+        self._reward = 0
 
-        #
+        # todo get bet from all players: 10 credits
+
+        # todo start player turns
+        # for p in self._players:
+            # p.init_hand(self._deck)
+            # p.draw_cards(self._deck)
+
+        # todo finish game and announce winner
+
+        # todo ask player if want to play again
 
     @staticmethod
     def exit():
