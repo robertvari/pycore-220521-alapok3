@@ -128,9 +128,13 @@ class AIPlayer(PlayerBase):
 
 class Player(PlayerBase):
     def _create(self):
-        # player_name = input("What is your name?")
-        player_name = "Robert Vari"
+        player_name = input("What is your name?")
+        # player_name = "Robert Vari"
         self._name = player_name
+
+        print("Wellcome to the game")
+        print(f"You have {self._credits} credits to spend")
+        print(f"Good luck!")
 
     def draw_cards(self, deck):
         print("This is your turn")
