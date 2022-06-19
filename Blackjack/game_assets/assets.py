@@ -93,7 +93,7 @@ class PlayerBase:
         print(f"Hand value: {self.hand_value}")
 
         while self._in_game:
-            if self.hand_value < 18:
+            if self.hand_value < 19:
                 new_card = deck.draw_card()
 
                 print(f"{self._name} draws a card: {new_card}")
@@ -104,6 +104,8 @@ class PlayerBase:
                 self._hand.append(new_card)
             else:
                 print(f"{self._name} finishes his/her turn")
+                if self.hand_value > 21:
+                    print(f"{self._name} lost this turn. Hand value: {self.hand_value}")
                 time.sleep(1)
                 self._in_game = False
 
