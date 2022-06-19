@@ -3,6 +3,10 @@ class PlaceBase:
         self._name = name
         self._player = None
 
+    def enter(self, player):
+        self._player = player
+        print(f"Wellcome in the {self._name} {self._player}")
+
 
 class Tavern(PlaceBase):
     pass

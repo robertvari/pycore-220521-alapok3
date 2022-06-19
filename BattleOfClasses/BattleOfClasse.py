@@ -1,5 +1,6 @@
 import os
 from game_assets.characters import Player
+from game_assets.places import Arena, Tavern
 
 
 class BattleOfClasses:
@@ -7,6 +8,8 @@ class BattleOfClasses:
         self._intro()
 
         self._player = Player()
+        self._arena = Arena("Arena")
+        self._tavern = Tavern("Black Horse tavern")
 
         self._main_menu()
 
@@ -34,9 +37,9 @@ class BattleOfClasses:
         player_input = input()
 
         if player_input == "1":
-            print("Go to Black Horse tavern...")
+            self._tavern.enter(self._player)
         elif player_input == "2":
-            print("Go to the Arena")
+            self._arena.enter(self._player)
         else:
             self._exit()
 
