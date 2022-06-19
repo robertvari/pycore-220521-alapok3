@@ -1,9 +1,13 @@
 import os
+from game_assets.characters import Player
 
 
 class BattleOfClasses:
     def __init__(self):
         self._intro()
+
+        self._player = Player()
+
         self._main_menu()
 
     def _intro(self):

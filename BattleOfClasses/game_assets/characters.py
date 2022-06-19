@@ -33,7 +33,8 @@ class CharacterBase:
 
 class Player(CharacterBase):
     def _create(self):
-        self._name = input("What is your name?")
+        # self._name = input("What is your name?")
+        self._name = "Robert Vari"
 
 
 class AIPlayer(CharacterBase):
@@ -50,4 +51,4 @@ if __name__ == '__main__':
     enemy3 = AIPlayer()
 
     print(player)
-    print(ai_player)
+    print(enemy1)
