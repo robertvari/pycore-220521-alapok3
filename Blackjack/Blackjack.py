@@ -27,6 +27,7 @@ class Blackjack:
 
         # get bet from all players: 10 credits
         for p in self._players:
+            p.reset()
             self._reward += p.give_bet(10)
 
         # start player turns
