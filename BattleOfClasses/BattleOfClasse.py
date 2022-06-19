@@ -24,7 +24,7 @@ class BattleOfClasses:
         os.system("cls" if os.name == "nt" else "clear")
 
     def _main_menu(self):
-        print(f"Wellcome in this small town PLAYER_NAME")
+        print(f"Wellcome in this small town {self._player}")
         print("There is a tavern on the right and an arena on the left.")
         print("Where do you want to go?")
         print("1. Black Horse tavern")
