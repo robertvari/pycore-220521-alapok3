@@ -44,7 +44,12 @@ class Player(CharacterBase):
         # self._name = input("What is your name?")
         self._name = "Robert Vari"
 
+        # todo remove this!!
+        self._golds = 100
+
     def buy(self, item):
+        self._golds -= item.price
+
         if isinstance(item, Weapon) and not self._right_hand:
             self._right_hand = item
         else:
