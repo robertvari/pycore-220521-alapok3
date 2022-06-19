@@ -1,3 +1,5 @@
+import random
+
 from game_assets.items import CommonItem, Weapon
 from game_assets.characters import AIPlayer
 
@@ -100,12 +102,30 @@ class Arena(PlaceBase):
         user_input = input()
 
         if user_input == "1":
-            print("TODO Start challenge...")
+            self._start_challenge()
         else:
             self._game.main_menu()
 
-    def start_challenge(self):
+    def _start_challenge(self):
         self._game.clear_screen()
+        my_enemy = random.choice(self._enemy_list)
+        winner = None
+
+        while True:
+            my_enemy.attack(self._player)
+            if not self._player.alive:
+                winner = my_enemy
+                break
+
+            self._player.attack(my_enemy)
+            if not my_enemy.alive:
+                winner = self._player
+                break
+
+        print(f"The winner is: {winner}")
+        print("Press enter to continue")
+        input()
+        self._main_menu()
 
 
 if __name__ == '__main__':
