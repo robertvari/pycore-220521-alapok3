@@ -1,4 +1,5 @@
 from game_assets.items import CommonItem, Weapon
+from game_assets.characters import AIPlayer
 
 
 class PlaceBase:
@@ -84,7 +85,15 @@ class Tavern(PlaceBase):
 
 
 class Arena(PlaceBase):
+    def __init__(self, name, game):
+        super().__init__(name, game)
+        self._enemy_list = []
+        for _ in range(20):
+            self._enemy_list.append(AIPlayer())
+
     def _main_menu(self):
+        self._game.clear_screen()
+
         print("1. Challenge yourself!")
         print("2. Go back to the street.")
 
@@ -94,3 +103,11 @@ class Arena(PlaceBase):
             print("TODO Start challenge...")
         else:
             self._game.main_menu()
+
+    def start_challenge(self):
+        self._game.clear_screen()
+
+
+if __name__ == '__main__':
+    arena = Arena("Arena", None)
+    pass
