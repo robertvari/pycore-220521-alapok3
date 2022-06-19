@@ -16,6 +16,10 @@ class PlaceBase:
 
 
 class Tavern(PlaceBase):
+    def __init__(self, name, game):
+        super().__init__(name, game)
+        self._items = []
+
     def _main_menu(self):
         print("1. Buy something")
         print("2. Go back to the street.")
@@ -23,11 +27,11 @@ class Tavern(PlaceBase):
         user_input = input()
 
         if user_input == "1":
-            print("TODO Buy something...")
+            self._shop_menu()
         else:
             self._game.main_menu()
 
-    def shop_menu(self):
+    def _shop_menu(self):
         self._game.clear_screen()
         print(f"You have {self._player.golds} golds.")
         print("-"*50)
