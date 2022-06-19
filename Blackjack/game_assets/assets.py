@@ -132,6 +132,25 @@ class Player(PlayerBase):
         player_name = "Robert Vari"
         self._name = player_name
 
+    def draw_cards(self, deck):
+        print("This is your turn")
+
+        while self._in_game:
+            print(f"Your cards: {self._hand}")
+            print(f"Your hand value: {self.hand_value}")
+
+            player_input = input("Do you want to draw a new card? (y/n)")
+
+            if player_input == "y":
+                my_new_card = deck.draw_card()
+                print(f"Your new card: {my_new_card}")
+                if "Ace" in my_new_card.name and self.hand_value > 10:
+                    my_new_card.set_value(1)
+
+                self._hand.append(my_new_card)
+            else:
+                self._in_game = False
+
 
 if __name__ == '__main__':
     deck = Deck()
