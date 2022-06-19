@@ -33,7 +33,7 @@ class Tavern(PlaceBase):
             {"type": "Weapon", "name": "Hammer", "price": 24, "attr_modifier": 30},
             {"type": "Weapon", "name": "Sword", "price": 12, "attr_modifier": 15},
         ]
-        
+
         for i in item_data:
             if i["type"] == "CommonItem":
                 self._items.append(CommonItem(i["name"], i["price"], i["attr_modifier"]))
@@ -41,6 +41,8 @@ class Tavern(PlaceBase):
                 self._items.append(Weapon(i["name"], i["price"], i["attr_modifier"]))
 
     def _main_menu(self):
+        self._game.clear_screen()
+
         print("1. Buy something")
         print("2. Go back to the street.")
 
@@ -56,7 +58,17 @@ class Tavern(PlaceBase):
         print(f"You have {self._player.golds} golds.")
         print("-"*50)
 
+        index = 0
+        for index, i in enumerate(self._items):
+            print(f"{index} {i}")
 
+        print("-"*50)
+        print(f"{index + 1} Back to main menu")
+
+        user_input = int(input())
+
+        if user_input == index + 1:
+            self._main_menu()
 
 
 class Arena(PlaceBase):
