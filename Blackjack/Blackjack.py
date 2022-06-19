@@ -16,6 +16,18 @@ class Blackjack:
 
         self._reward = 0
 
+        self.start()
+
+    def start(self):
+        pass
+
+        #
+
+    @staticmethod
+    def exit():
+        print("See you later!")
+        exit()
+
     @staticmethod
     def _intro():
         print("-" * 50, "BLACKJACK", "-" * 50)
