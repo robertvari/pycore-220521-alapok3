@@ -70,6 +70,12 @@ class Tavern(PlaceBase):
         if user_input == index + 1:
             self._main_menu()
 
+        chosen_item = self._items[user_input]
+        if chosen_item.price > self._player.golds:
+            print(f"You don't have enough gold to buy a: {chosen_item.name}")
+            input("Press enter to continue")
+            self._shop_menu()
+
 
 class Arena(PlaceBase):
     def _main_menu(self):
