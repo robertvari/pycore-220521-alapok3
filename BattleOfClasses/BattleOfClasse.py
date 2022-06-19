@@ -8,13 +8,13 @@ class BattleOfClasses:
         self._intro()
 
         self._player = Player()
-        self._arena = Arena("Arena")
-        self._tavern = Tavern("Black Horse tavern")
+        self._arena = Arena("Arena", self)
+        self._tavern = Tavern("Black Horse tavern", self)
 
-        self._main_menu()
+        self.main_menu()
 
     def _intro(self):
-        self._clear_screen()
+        self.clear_screen()
         print("-"*50, "BATTLE OF CLASSES", "-"*50)
 
     @staticmethod
@@ -23,10 +23,12 @@ class BattleOfClasses:
         exit()
 
     @staticmethod
-    def _clear_screen():
+    def clear_screen():
         os.system("cls" if os.name == "nt" else "clear")
 
-    def _main_menu(self):
+    def main_menu(self):
+        self.clear_screen()
+
         print(f"Wellcome in this small town {self._player}")
         print("There is a tavern on the right and an arena on the left.")
         print("Where do you want to go?")

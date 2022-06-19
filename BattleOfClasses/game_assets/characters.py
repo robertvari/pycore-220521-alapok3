@@ -5,8 +5,13 @@ class CharacterBase:
     def __init__(self):
         self._name = None
         # todo add attributes here...
+        self._golds = random.randint(5, 50)
 
         self._create()
+
+    @property
+    def golds(self):
+        return self._golds
 
     def _create(self):
         self._name = self.get_fantasy_name()
